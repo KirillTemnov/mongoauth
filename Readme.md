@@ -4,24 +4,24 @@ mongodb store backend for oauth tokens
 
 ## Install
 
-    ```bash
-    npm install mongoauth
-    ```
+```bash
+npm install mongoauth
+```
     
 ## Usage
 
-    ```
-    Store = require "mongoauth"
-    # change connection string
-    connectionString = "localhost:27017test?auto_reconnect=true"
-    mStore = new Store.OAuthClientStore connectionString
+```coffee-script
+Store = require "mongoauth"
+# change connection string
+connectionString = "localhost:27017test?auto_reconnect=true"
+mStore = new Store.OAuthClientStore connectionString
 
-    # call methods
-    mStore.saveRequestToken "example.com", {
-        oauth_token: "foo"
-        oauth_token_secret: "bar"
-        personId: 2421}, ->
-    ```
+# call methods
+mStore.saveRequestToken "example.com", {
+    oauth_token: "foo"
+    oauth_token_secret: "bar"
+    personId: 2421}, ->
+```
 
 ## API
 
