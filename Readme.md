@@ -42,67 +42,67 @@ mStore.saveRequestToken "example.com", {
 All callback functions are **requred**, pass an empty function 
 if you dont need them.
 
-#### `saveRequestToken`
+#### `saveRequestToken(client, requestToken, fn)`
 
   Save request token.
   
-  client         - client application name
-  requestToken   - request token object
-  fn(err, token) - Callback function
-    err          - error or null
-    token        - saved token
+  - `client` - client application name
+  - `requestToken` - request token object
+  - `fn(err, token)` - Callback function
+    - `err` - error or `null`
+    - `token` - saved token
 
 
-#### `saveAccessToken`
+#### `saveAccessToken(client, acessToken, fn)`
 
   Save access token.
 
-  client - client application name
-  accessToken - access token object
-  fn(err, token) - Callback function
-    err          - error or null
-    token        - saved token
+  - `client` - client application name
+  - `accessToken` - access token object
+  - `fn(err, token)` - Callback function
+    - `err` - error or `null`
+    - `token` - saved token
 
 
-#### `getRequestToken`
+#### `getRequestToken(client, tokenKey, fn)`
 
   Get request token.
 
-  client    - client application name
-  token_key -  token public key
-  fn(token) - callback function
-    token   - request token object (if found) or null
+  - `client` - client application name
+  - `tokenKey` -  token public key
+  - `fn(token)` - callback function
+    - `token` - request token object (if found) or `null`
 
 
-#### `getAccessToken`
+#### `getAccessToken(client, tokenKey, fn)`
 
  Get access token.
 
-  client    - client application name
-  token_key -  token public key
-  fn(token) - callback function
-    token   - access token object (if found) or null
+  - `client` - client application name
+  - `tokenKey` -  token public key
+  - `fn(token)` - callback function
+    - `token` - access token object (if found) or `null`
 
 
-#### `getPersonAccessToken`
+#### `getPersonAccessToken(personId, client, fn)`
 
 Get access token for specific person.
 
-  personId -  person id
-  client - client application name
-  fn(token) - callback function
-    token   - access token object (if found) or null
+  - `personId` -  person id
+  - `client` - client application name
+  - `fn(token)` - callback function
+    - `token` - access token object (if found) or `null`
 
 
-#### `fetchAccessTokens`
+#### `fetchAccessTokens(personIds, client, fn)`
 
   Fetch access tokens for array of person ids.
 
-  personIds       -  array of person ids
-  client          - client application name
-  fn(err, tokens) - callback function
-    error         - error or null
-    tokens        - array of tokens
+  - `personIds` -  array of person ids
+  - `client` - client application name
+  - `fn(err, tokens)` - callback function
+    - `error` - error or `null`
+    - `tokens` - array of tokens
 
 
     
