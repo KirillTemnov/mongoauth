@@ -20,6 +20,8 @@ mongo = require "mongoskin"
 #
 class OAuthClientStore
 
+  constructor: (@connectionString, @collectionName="oauth.client-tokens") ->
+
   #
   # Internal: Create new mongoskin connection
   #
