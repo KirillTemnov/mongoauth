@@ -2,18 +2,18 @@
     "author": "Kirill Temnov <allselead@gmail.com>"
   , "name": "mongoauth"
   , "description": "lightweight OAuth token store with mongodb backend"
-  , "version": "0.5.1"
+  , "version": "0.6.0"
   , "repository": {
         "type": "git"
      ,   "url": "git://github.com/selead/mongoauth.git"
       }
   , "main"         : "./mongo.coffee"
   , "engines": {
-    "node": "0.6.x"
+    "node": ">= 0.8"
   }
   , "dependencies": {
-      "mongoskin": "*"
-    , "coffee-script": "1.1.x"
+      "mongoskin": ">= 0.4.4"
+    , "coffee-script": ">= 1.3"
   }
   , "devDependencies": {}
 }

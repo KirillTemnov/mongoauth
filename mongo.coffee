@@ -20,14 +20,13 @@ mongo = require "mongoskin"
 #
 class OAuthClientStore
 
-  constructor: (@connectionString, @collectionName="oauth.client-tokens") ->
+  constructor: (@connectionString, @collectionName="oauth.client.tokens") ->
 
   #
   # Internal: Create new mongoskin connection
   #
   #
-  _createConnection: ->
-   mongo.db @connectionString
+  _createConnection: ->  mongo.db @connectionString, {safe: yes}
 
   #
   # Internal: Save token
@@ -40,6 +39,9 @@ class OAuthClientStore
   #
   _saveToken: (tokenToStore, fn) ->
     tokenToStore.time ||= new Date()
+    if tokenToStore.type is "request"
+      tokenToStore.personId ||= null
+
     db = @_createConnection()
     db.collection(@collectionName).ensureIndex {oauth_token: 1, client: 1, type: 1, personId: 1}, {unique: yes}, ->
     db.collection(@collectionName).update {oauth_token: tokenToStore.oauth_token, client: tokenToStore.client, type: tokenToStore.type}, tokenToStore, {safe: yes, upsert: yes, new: yes}, (err, token) ->
