@@ -49,6 +49,31 @@ class OAuthClientStore
       fn err, token
 
   #
+  # Public: Replace token (needs when refresh it)
+  #
+  # applyed for OAuth 2.0 refresh mechanizm
+  #
+  # oldToken - token object
+  #   :oauth_token
+  #   :oauth_refresh_token
+  #   :type
+  #   :client
+  #   :personId
+  # newOAuthToken - new oauth token value to replace
+  #
+  replaceToken: (oldToken, newOAuthToken, fn) ->
+    db = @_createConnection()
+    db.collection(@collectionName).remove {oauth_token: oldToken.oauth_token, client: oldToken.client, personId: oldToken.personId}, {safe: yes}, (err) =>
+      db.close()
+      if err
+        fn err
+      else
+        # insert
+        oldToken.oauth_token = newOAuthToken
+        @_saveToken oldToken, fn
+
+
+  #
   # Public: Save request token.
   #
   #   client         - client application name

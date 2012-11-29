@@ -31,6 +31,7 @@ mStore.saveRequestToken "example.com", {
   
   - `oauth_token` - public key
   - `oauth_token_secret` - secret key
+  - `oauth_token_refresh` - refresh token (used with OAuth 2)
   - `type` - "access" | "request"
   - `client` - client for app (e.g. "twitter", "foursquare" or whatever)
   - `personId` - person, who owns token
@@ -105,6 +106,18 @@ Get access token for specific person.
     - `tokens` - array of tokens
 
 
+#### `replaceToken(oldToken, newOAuthAccessToken, fn)`
+
+  Replace `oldToken.oauth_token` to `newOAuthAccessToken` inside mongo
+
+  - `oldToken` - token object
+  - `newOAuthAccessToken` - new value for `oauth_token` in token object
+  - `fn(error)` - callback function
+    - `error` - error or `null`
+    
+## History
+
+  (0.6.1) - add Replace token method for OAuth 2.0 clients (google)
     
 ## Licence
 
